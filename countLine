@@ -1,0 +1,20 @@
+#!/bin/bash
+if [ $# -ne 2 ]; then
+	echo "Invalid Argument"
+	exit 0
+fi
+if [ -f $2 ]; then
+	count=0;
+else 
+	exit 1
+fi
+case $1 in
+	"-i") 
+	count=`grep ^i $2 | wc -l`;;
+	"-e")
+	count=`grep ^e $2 | wc -l`;;
+	*)
+	echo "Option not allow"
+	exit 1;;
+esac
+echo $count;

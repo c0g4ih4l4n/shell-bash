@@ -1,0 +1,59 @@
+#!/bin/bash
+upper() {
+	shift 
+	for i
+	do
+		tr a-z A-Z < $1 > $1.out
+		rm $1
+		mv $1.out $1
+		shift
+	done
+    exit 0
+}
+
+lower() {
+	shift 
+	for i 
+	do 
+		tr A-Z a-z < $1 > $1.out
+		rm $1
+		mv $1.out $1
+		shift
+	done
+    exit 0
+}
+
+print () {
+	shift
+	for i
+	do
+		echo "File $1: "
+		echo "`cat $1`"
+		echo ""
+		shift
+	done
+    exit 0
+}
+
+usage_error() {
+	echo "$1 syntax is $1 <option> <files>"
+	echo ""
+	echo "where option is one of following :"
+	echo "	-p -- to print frame files"
+	echo "	-u -- change to upper and save"
+	echo "	-l -- change to lower and save"
+    exit 1
+}
+if [ $# -eq 1 ]
+then 
+	echo "Program $0 must have at least 2 arguments."
+	exit 0
+fi
+case $1 in 
+	p | -p) print $@;;
+	u | -u) upper $@;;
+	l | -l) lower $@;;
+	*)
+	echo "Program $0 doesn't recognize parameter $1"
+	usage_error;;
+esac 

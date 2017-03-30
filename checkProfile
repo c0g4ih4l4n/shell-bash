@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -f .profile ];then
+	echo "File exists!"
+else 
+	echo "File not Found"
+fi

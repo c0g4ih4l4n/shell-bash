@@ -1,0 +1,2 @@
+umount /dev/sda4
+mount /dev/sda4

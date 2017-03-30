@@ -1,0 +1,9 @@
+#!/bin/bash
+
+suffix=BACKUP--`date +%Y%m%d-%H%M`
+
+for file in *.sh; do
+    newname=$file.$suffix
+    echo "Copy $file to $newname"
+    cp $file $newname
+done

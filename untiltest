@@ -1,0 +1,8 @@
+#!/bin/bash
+count=1
+until [ $count -ne 3 ]
+do
+	echo "Parameter $count : $1"
+	shift
+	count=`expr $count + 1`
+done	
